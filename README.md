@@ -6,36 +6,44 @@
 필드 : 각 항목의 분류 ex) 전화번호, 이름...
 레코더 : 하나의 항목과 관련된 필드의 값 ex) 이름,전화번호,이메일주소 -> 한 사람이 가지고있는 데이터
 
----
+~~~
 —DDL (Data Definition Language)
 // 테이블 생성 쿼리
 **create table 테이블이름 (컬럼이름1 컬럼속성, 컬럼이름2, 속성....);**
+
 create table memo(memoid int,  title varchar(250), content text);
+
 // 테이블 자동 증가 (실행을 시켜줘야함 -insert에서 id 안써야 함)
 **create table memo(memoid integer primary key,  title varchar(250), content text); -> sqlite
 create table memo(memoid auto_increment,  title varchar(250), content text); -> mysql**
+
 —DML
 // 데이터 입력 쿼리
 **insert into 테이블이름 (컬럼이름1, 컬럼이름2…) values(숫자값, ‘문자값’…);
 insert into memo(memoid, title, content) values(1, ‘제목’, ‘내용임’);**
+
 // 데이터 조회 쿼리
 **select 컬럼이름1, 컬럼이름2…from 테이블이름 where 조건절;**
+
 select memoir, title from memo;  // 조건절이 없으면 전체 데이터를 가져온다
 select * from memo; // 컬럼 이름 대신에 * 을 사용하면 전체 컬럼을 가져온다
 select memoid, title, content from memo where memoid=1;
 select * from memo where content like ‘%내용&%’;// 문자열 중간 검색
+
 // 데이터 수정쿼리
 **update 테이블이름 set 컬럼이름 = 숫자값, 컬럼이름 = ‘문자값’ where 조건절 ;**
+
 update memo set content=‘수정됨’ , title=‘제목이 수정됨’ where memoid=3;
 // 데이터 삭제쿼리
 **delete from 테이블이름 where 조건절**
+
 delete from memo where memoid=2;   // 조건이 없으면 다 지워짐
 --
 char(250)
 varchar(250)  // 내가 사용할 수 있는 최대 공간이 250(byte)
 null은없음
 text  // 댜용량의 데이터를 넣을 수 있음
----
+~~~
 
 ## ORMLite
 - SQLite데이터를 객체화처럼 쓸수있게 도와줌
