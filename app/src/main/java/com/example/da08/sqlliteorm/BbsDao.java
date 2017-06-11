@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Da08 on 2017. 6. 9..
  */
 
-public class BbsDao {
+public class BbsDao {  //dao = data access object (CRUD함수 포함)
 
     DBhelper dBhelper;
     Dao<Bbs, Integer> dao;
@@ -20,7 +20,7 @@ public class BbsDao {
         // 1 database 연결
         dBhelper = DBhelper.getInstance(context);
         try {
-            dao = dBhelper.getDao(Bbs.class);
+            dao = dBhelper.getDao(Bbs.class); // table 연결
         } catch (SQLException e) {
             e.printStackTrace();
         }

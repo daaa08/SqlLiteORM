@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Da08 on 2017. 6. 9..
  */
 
-// database 에 접근할 수 있는 환경을 만들어 준 것
+// database 에 접근할 수 있는 환경을 만들어 준 것 - database를 다룰때 많이 사용하게 됨
 public class DBhelper extends OrmLiteSqliteOpenHelper{
 
     public static final String DATABASE_NAME = "database.db";
@@ -78,7 +78,7 @@ public class DBhelper extends OrmLiteSqliteOpenHelper{
 
         try {
             // 1 테이블에 연결
-            Dao<Memo, Integer> dao = getDao(Memo.class);  // data access object = dao
+            Dao<Memo, Integer> dao = getDao(Memo.class);
             // 2 데이터를 입력
             dao.create(memo);
         } catch (SQLException e) {
@@ -174,13 +174,11 @@ public class DBhelper extends OrmLiteSqliteOpenHelper{
             Dao<Memo, Integer> dao = getDao(Memo.class);
             // 2 데이터를 삭제
             dao.deleteById(id);
-            // *참고 : 아이디 삭제
+            // *참고 : 아이디로 삭제
 //            dao.deleteById(3);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
-
-
 }

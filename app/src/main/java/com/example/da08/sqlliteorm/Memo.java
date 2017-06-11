@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Da08 on 2017. 6. 9..
  */
-@DatabaseTable(tableName = "Memo")
+@DatabaseTable(tableName = "Memo")  // database의 Memo라는 이름으로 table사용 (이름은 꼭 설정 안해줘도 됨)
 public class Memo {
 
     // table 속성 정의
