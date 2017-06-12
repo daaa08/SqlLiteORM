@@ -14,9 +14,19 @@ import java.util.List;
 public class BbsDao {  //dao = data access object (CRUD함수 포함)
 
     DBhelper dBhelper;
+    private static BbsDao bbsDao = null;
     Dao<Bbs, Integer> dao;
 
-    public BbsDao(Context context){
+    // 싱글톤으로 만들어보기
+    public static BbsDao getInstance(Context context) {
+        if (bbsDao == null) {
+            bbsDao = new BbsDao(context);
+
+        }
+        return bbsDao;
+    }
+
+    private BbsDao(Context context) {
         // 1 database 연결
         dBhelper = DBhelper.getInstance(context);
         try {
@@ -26,7 +36,7 @@ public class BbsDao {  //dao = data access object (CRUD함수 포함)
         }
     }
 
-    public  void create(Bbs bbs){
+    public void create(Bbs bbs) {
         try {
             dao.create(bbs);
         } catch (SQLException e) {
@@ -34,7 +44,7 @@ public class BbsDao {  //dao = data access object (CRUD함수 포함)
         }
     }
 
-    public  List<Bbs> read(){
+    public List<Bbs> read() {
         List<Bbs> datas = null;
 
         try {
@@ -45,11 +55,11 @@ public class BbsDao {  //dao = data access object (CRUD함수 포함)
         return datas;
     }
 
-    public static void update(Bbs bbs){
+    public static void update(Bbs bbs) {
 
     }
 
-    public static void delete(Bbs bbs){
+    public static void delete(Bbs bbs) {
 
     }
 }

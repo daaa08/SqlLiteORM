@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         dBhelper.delete(3);
 
         //
-        BbsDao dao = new BbsDao(this);
-        dao.create(new Bbs());
+        BbsDao bbsDao = BbsDao.getInstance(getBaseContext());
+        bbsDao.create(new Bbs());
     }
 }
